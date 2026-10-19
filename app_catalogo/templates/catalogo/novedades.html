@@ -1,0 +1,131 @@
+<!-- catalogo/templates/catalogo/novedades.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Novedades{% endblock %}
+
+{% block contenido %}
+    <style>
+        .card-novedades {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+        }
+
+        .card-novedades h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .card-novedades > p.subtitulo {
+            font-size: 16px;
+            color: #555555;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lista-novedades {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item-novedad {
+            background-color: #f8f9fa;
+            margin-bottom: 12px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #16a085;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            gap: 15px;
+        }
+
+        .info-novedad a {
+            color: #2c3e50;
+            font-size: 17px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .info-novedad a:hover {
+            color: #16a085;
+            text-decoration: underline;
+        }
+
+        .detalles-novedad {
+            color: #666666;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        .badge-genero {
+            background-color: #eef2f5;
+            color: #4a5568;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .resumen-total {
+            margin-top: 25px;
+            padding: 12px 20px;
+            background-color: #e8f8f5;
+            color: #117a65;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 15px;
+            display: inline-block;
+        }
+
+        .sin-resultados {
+            background-color: #fdf2f2;
+            color: #c0392b;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+    </style>
+
+    <div class="card-novedades">
+        <h1>Novedades del Catálogo</h1>
+        <p class="subtitulo">Publicaciones recientes (desde el año 2010 en adelante):</p>
+
+        <ul class="lista-novedades">
+            {% for libro in libros_novedades %}
+                <li class="item-novedad">
+                    <div class="info-novedad">
+                        <a href="{% url 'catalogo:detalle_libro' libro.id %}">
+                            {{ libro.titulo }}
+                        </a>
+                        <div class="detalles-novedad">
+                            Año de publicación: {{ libro.anio }}
+                        </div>
+                    </div>
+                    <div>
+                        <span class="badge-genero">{{ libro.genero|capfirst }}</span>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="sin-resultados">
+                    No hay novedades registradas.
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="resumen-total">
+            Total de novedades: {{ libros_novedades|length }}
+        </div>
+    </div>
+{% endblock %}

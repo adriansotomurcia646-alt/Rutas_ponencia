@@ -1,0 +1,71 @@
+<!-- catalogo/templates/catalogo/contacto.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Contacto{% endblock %}
+
+{% block contenido %}
+    <style>
+        .card-contacto {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+        }
+
+        .card-contacto h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .card-contacto p {
+            font-size: 16px;
+            color: #555555;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .caja-contacto {
+            background-color: #f8f9fa;
+            border-left: 5px solid #16a085;
+            padding: 20px 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .caja-contacto ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 2;
+        }
+
+        .caja-contacto li {
+            font-size: 16px;
+            color: #34495e;
+        }
+
+        .caja-contacto strong {
+            color: #2c3e50;
+            display: inline-block;
+            width: 180px;
+        }
+    </style>
+
+    <div class="card-contacto">
+        <h1>Contacto</h1>
+        <p>¿Tienes dudas o sugerencias sobre el sistema? Comunícate con nosotros:</p>
+        
+        <div class="caja-contacto">
+            <ul>
+                <li><strong>Correo electrónico:</strong> Adriansotomurcia646@gmail.com</li>
+                <li><strong>Horario de atención:</strong> Lunes a Viernes, 8:00 a.m. - 5:00 p.m.</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

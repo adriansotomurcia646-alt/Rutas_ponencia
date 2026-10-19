@@ -1,0 +1,30 @@
+<!-- catalogo/templates/catalogo/lista.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Listado de Libros{% endblock %}
+
+{% block contenido %}
+    <div style="padding: 20px;">
+        <h1>Catálogo de Libros {% if genero %}de {{ genero }}{% endif %}</h1>
+        
+        <p>Explora nuestra colección de libros disponibles y prestados:</p>
+
+        <ul>
+            {% for libro in libros %}
+                <li>
+                    <strong>{{ libro.titulo }}</strong> 
+                    — Autor: {{ libro.autor }} 
+                    ({{ libro.anio }}) | 
+                    <em>Género: {{ libro.genero }}</em> |
+                    {% if libro.disponible %}
+                        <span style="color: green; font-weight: bold;">[Disponible]</span>
+                    {% else %}
+                        <span style="color: red; font-weight: bold;">[Prestado]</span>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>No hay libros disponibles en este momento.</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

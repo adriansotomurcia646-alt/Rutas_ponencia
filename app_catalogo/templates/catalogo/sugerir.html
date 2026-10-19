@@ -1,0 +1,109 @@
+<!-- catalogo/templates/catalogo/sugerir.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Sugerir Libro{% endblock %}
+
+{% block contenido %}
+    <style>
+        .card-sugerir {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+        }
+
+        .card-sugerir h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .card-sugerir > p {
+            font-size: 16px;
+            color: #555555;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-sugerir {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-sugerir label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 15px;
+        }
+
+        .form-sugerir input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .form-sugerir input[type="text"]:focus {
+            border-color: #16a085;
+        }
+
+        .form-sugerir button {
+            background-color: #16a085;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .form-sugerir button:hover {
+            background-color: #117a65;
+        }
+
+        .mensaje-respuesta {
+            margin-top: 25px;
+            padding: 15px 20px;
+            background-color: #e8f8f5;
+            color: #117a65;
+            border-radius: 8px;
+            border-left: 5px solid #16a085;
+            font-weight: 600;
+            font-size: 15px;
+        }
+    </style>
+
+    <div class="card-sugerir">
+        <h1>Sugerir un Libro</h1>
+        <p>¿Te gustaría que agreguemos un libro a la biblioteca? Escribe su título a continuación:</p>
+
+        <form method="POST" class="form-sugerir">
+            {% csrf_token %} 
+            
+            <label for="titulo">Título del libro:</label>
+            <input type="text" name="titulo" id="titulo" placeholder="Ej. Cien años de soledad" required>
+            
+            <button type="submit">Enviar sugerencia</button>
+        </form>
+
+        {% if mensaje %}
+            <div class="mensaje-respuesta">
+                {{ mensaje }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+<!-- catalogo/templates/catalogo/autores.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Autores{% endblock %}
+
+{% block contenido %}
+    <style>
+        .card-autores {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+        }
+
+        .card-autores h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .card-autores p {
+            font-size: 16px;
+            color: #555555;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lista-autores {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lista-autores li {
+            background-color: #f8f9fa;
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #16a085;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .badge-total {
+            background-color: #e8f8f5;
+            color: #16a085;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+
+    <div class="card-autores">
+        <h1>Listado de Autores</h1>
+        <p>Autores registrados en el catálogo ordenados alfabéticamente:</p>
+        
+        <ul class="lista-autores">
+            {% for autor, total in autores %}
+                <li>
+                    <strong>{{ autor }}</strong> 
+                    <span class="badge-total">{{ total }} libro(s)</span>
+                </li>
+            {% empty %}
+                <li style="border-left-color: #e74c3c; background-color: #fdf2f2; color: #c0392b;">
+                    No hay autores registrados en el sistema.
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

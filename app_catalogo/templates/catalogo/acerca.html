@@ -1,0 +1,85 @@
+<!-- catalogo/templates/catalogo/acerca.html -->
+{% extends "catalogo/base.html" %}
+
+{% block titulo %}Acerca de la Biblioteca{% endblock %}
+
+{% block contenido %}
+    <style>
+        .card-acerca {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+        }
+
+        .card-acerca h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #16a085;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .card-acerca p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555555;
+            margin-top: 20px;
+        }
+
+        .caja-info {
+            background-color: #f8f9fa;
+            border-left: 5px solid #2c3e50;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+
+        .caja-info h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .caja-info ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        .caja-info li {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .caja-info strong {
+            color: #34495e;
+            display: inline-block;
+            width: 130px;
+        }
+    </style>
+
+    <div class="card-acerca">
+        <h1>Acerca del Proyecto</h1>
+        <p>
+            Este sistema de catálogo de libros fue desarrollado como parte del taller práctico de 
+            <strong style="color: #2c3e50;">Rutas, Vistas y Plantillas</strong> utilizando el framework 
+            <span style="background-color: #e8f8f5; color: #16a085; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Django</span>.
+        </p>
+        
+        <div class="caja-info">
+            <h3>Información Académica:</h3>
+            <ul>
+                <li><strong>Programa:</strong> Tecnólogo en Análisis y Desarrollo de Software (ADSO)</li>
+                <li><strong>Institución:</strong> SENA - Centro Tecnológico de la Amazonia</li>
+                <li><strong>Objetivo:</strong> Consolidar el dominio del patrón arquitectónico MTV y el manejo de enrutamiento dinámico y formularios seguros.</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
